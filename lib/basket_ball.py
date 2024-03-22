@@ -182,3 +182,74 @@ def game_dict():
             ]
         }
     }
+
+# list_comprehension = [item for item of items if condition]
+
+# first two methods are helper functions that do not pass tests(as they are not tested)
+def get_teams():
+    return [team for team in game_dict().values()]
+    # team_list = []
+    # for team in gd().values():
+    #     team_list.append(team)
+
+    # return team  
+
+# print(get_teams())
+
+def get_all_players():
+    return [player for team in get_teams() for player in team["players"]] 
+    # all_players = []
+    # for team in get_teams():
+    #     for player in team["players"]:
+    #         all_players.append(player)
+
+# print(get_all_players())
+
+# Lab methods being tested
+def num_points_per_game(name):
+    return next(player["points_per_game"] for player in get_all_players() if player["name"] == name)
+    # for player in get_all_players():
+    #     if player[name] == name:
+    #         return player["points_per_game"]
+
+
+def player_age(name):
+    pass
+
+def team_colors(team):
+    pass
+
+def team_names():
+    pass
+
+def player_numbers():
+    pass
+
+def player_stats():
+    pass
+
+# code from Nancy Noyes' review Friday 20240322
+# 2 line solution:1st two lines after def or following 4 lines as the most simplistic yet verbose
+# def get_teams():
+#     teams = game_dict().values()
+#     return [team for team in teams]
+    # team_list = [] 
+    # for team in teams:
+    #     team_list.append(team["team_name"])
+    # return team
+
+# 1st line after def: list comp/1 liner solution or following 3 lines more verbose solution
+# def get_all_players():
+# return [player for team in get_teams() for player in team["players"]]
+    # all_players = []
+    # for team in get_teams():
+    #     for player in team["players"]:
+    #         all_players.append(player)
+
+# Lab methods
+# def num_points_per_game(name):
+    # for player in get_all_players():
+    #     if player["name"] == name:
+    #         return player["points_per_game"]
+    
+    # return next(player["points_per_game"] for player in get_all_players() if player["name"] == name)
