@@ -212,21 +212,49 @@ def num_points_per_game(name):
     #     if player[name] == name:
     #         return player["points_per_game"]
 
+# print(num_points_per_game("Davis Bertans"))
 
 def player_age(name):
-    pass
+    return next(player["age"] for player in get_all_players() if player["name"] == name)
 
-def team_colors(team):
-    pass
+# print(player_age("Davis Bertans"))
+
+def team_colors(team_name):
+    # from ChatGPT - Filter teams to find the one with the specified name
+    team = next((team for team in get_teams() if team["team_name"] == team_name), None)
+    # breakpoint()
+    if team:
+        return team["colors"]
+    else:
+        return None
+
+# print(team_colors("Cleveland Cavaliers"))
 
 def team_names():
+    teams = [team["team_name"] for team in get_teams()]
+    return teams
+    # *****************Generator expression returning a generator obj
+    # teams = (team["team_name"] for team in get_teams())
+    # for team in teams:
+    #     return team
+    # *************have to iterate through gen obj to access values; return statement 
+    # on above line only returns first team as does next()
+
+# print(team_names())
+
+def player_numbers(team_arg):
+    return [player["number"] for team in get_teams() for player in team["players"] if team["team_name"] == team_arg]
+
+# print(player_numbers("Washington Wizards"))
+
+def player_stats(player_name):
+    return next(player for player in get_all_players()if player["name"] == player_name)
+
+print(player_stats("Davis Bertans"))
+
+def average_rebounds_by_shoe_brand():
     pass
 
-def player_numbers():
-    pass
-
-def player_stats():
-    pass
 
 # code from Nancy Noyes' review Friday 20240322
 # 2 line solution:1st two lines after def or following 4 lines as the most simplistic yet verbose
