@@ -255,15 +255,17 @@ def player_stats(player_name):
 def average_rebounds_by_shoe_brand():
     rebounds_by_shoe = {}
     for player in get_all_players():
-        print(player["shoe_brand"])
-        print(player["rebounds_per_game"])
         brand = player["shoe_brand"]
         rebounds = player["rebounds_per_game"]
         if brand in rebounds_by_shoe:
-            print(brand)
+            rebounds_by_shoe[brand].append(rebounds)
         else:
             rebounds_by_shoe[brand] = [rebounds]
-    return rebounds_by_shoe
+    for shoe in rebounds_by_shoe:
+        avg_rebounds = ("{:.2f}".format(round(sum(rebounds_by_shoe[shoe])/(len(rebounds_by_shoe[shoe])),2)))
+        print(f"{shoe}:  {avg_rebounds}")
+        # breakpoint()    
+    # print(rebounds_by_shoe)
 
 average_rebounds_by_shoe_brand()
 
