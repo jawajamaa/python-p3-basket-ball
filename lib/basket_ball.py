@@ -264,10 +264,8 @@ def average_rebounds_by_shoe_brand():
     for shoe in rebounds_by_shoe:
         avg_rebounds = ("{:.2f}".format(round(sum(rebounds_by_shoe[shoe])/(len(rebounds_by_shoe[shoe])),2)))
         print(f"{shoe}:  {avg_rebounds}")
-        # breakpoint()    
-    # print(rebounds_by_shoe)
 
-average_rebounds_by_shoe_brand()
+# average_rebounds_by_shoe_brand()
 
 # code from Nancy Noyes' review Friday 20240322
 # 2 line solution:1st two lines after def or following 4 lines as the most simplistic yet verbose
