@@ -250,11 +250,22 @@ def player_numbers(team_arg):
 def player_stats(player_name):
     return next(player for player in get_all_players()if player["name"] == player_name)
 
-print(player_stats("Davis Bertans"))
+# print(player_stats("Davis Bertans"))
 
 def average_rebounds_by_shoe_brand():
-    pass
+    rebounds_by_shoe = {}
+    for player in get_all_players():
+        print(player["shoe_brand"])
+        print(player["rebounds_per_game"])
+        brand = player["shoe_brand"]
+        rebounds = player["rebounds_per_game"]
+        if brand in rebounds_by_shoe:
+            print(brand)
+        else:
+            rebounds_by_shoe[brand] = [rebounds]
+    return rebounds_by_shoe
 
+average_rebounds_by_shoe_brand()
 
 # code from Nancy Noyes' review Friday 20240322
 # 2 line solution:1st two lines after def or following 4 lines as the most simplistic yet verbose
